@@ -1,6 +1,6 @@
 const links = {
   Servicios: ["Aplicaciones Web", "Desarrollo SaaS", "Diseño UX/UI", "API & Backend"],
-  Empresa: ["Acerca de", "Trabajo", "Proceso", "Blog"],
+  Empresa: ["Acerca de", "Trabajo", "Proceso"],
   Conectar: ["hello@shft.ya", "Instagram", "LinkedIn", "GitHub"],
 }
 
