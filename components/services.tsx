@@ -26,7 +26,7 @@ const services = [
     ),
   },
   {
-    title: "Diseño UI/UX",
+    title: "Diseño UX/UI",
     description:
       "Diseño que convierte. Creamos interfaces intuitivas basadas en investigación de usuarios y probadas con usuarios reales.",
     tag: "Diseño · Investigación",
@@ -58,7 +58,7 @@ export function Services() {
   return (
     <section className="py-24 px-6" id="services-grid" aria-labelledby="services-heading">
       <div className="mx-auto max-w-6xl">
-        <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-primary">
+        <p className="brand-text-gradient mb-4 text-xs font-semibold uppercase tracking-widest">
           Lo que construimos
         </p>
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">

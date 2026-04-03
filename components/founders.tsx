@@ -26,7 +26,7 @@ export function Founders() {
     <section id="about" aria-labelledby="founders-heading" className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
       {/* Header */}
       <div className="mb-16 text-center">
-        <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-primary">
+        <p className="brand-text-gradient mb-4 text-xs font-semibold uppercase tracking-widest">
           El equipo
         </p>
         <h2
@@ -69,7 +69,7 @@ export function Founders() {
             <h3 className="text-lg font-semibold text-foreground">{founder.name}</h3>
 
             {/* Role */}
-            <p className="mt-1 text-xs font-medium uppercase tracking-widest text-primary">
+            <p className="brand-text-gradient mt-1 text-xs font-medium uppercase tracking-widest">
               {founder.role}
             </p>
 

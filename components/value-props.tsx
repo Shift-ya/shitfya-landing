@@ -52,7 +52,7 @@ export function ValueProps() {
     <section className="relative py-24 px-6" id="services" aria-labelledby="value-heading">
       <div className="mx-auto max-w-6xl">
         {/* Section label */}
-        <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-primary">
+        <p className="brand-text-gradient mb-4 text-xs font-semibold uppercase tracking-widest">
           Por qué shft.ya
         </p>
         <h2

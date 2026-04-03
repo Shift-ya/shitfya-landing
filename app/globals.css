@@ -26,10 +26,15 @@
   --ring: oklch(0.68 0.22 264);
   --radius: 0.5rem;
   /* custom brand tokens */
-  --brand-blue: oklch(0.68 0.22 264);
-  --brand-blue-glow: oklch(0.68 0.22 264 / 0.25);
-  --brand-surface: oklch(0.13 0.005 264);
-  --brand-surface-border: oklch(0.25 0.01 264);
+  --brand-cyan: #2ed7ff;
+  --brand-blue: #5b6dff;
+  --brand-violet: #7f4dff;
+  --brand-magenta: #f52ccf;
+  --brand-cyan-glow: rgb(46 215 255 / 0.32);
+  --brand-blue-glow: rgb(91 109 255 / 0.28);
+  --brand-magenta-glow: rgb(245 44 207 / 0.24);
+  --brand-surface: #0e1020;
+  --brand-surface-border: #2d3158;
   --sidebar: oklch(0.12 0 0);
   --sidebar-foreground: oklch(0.97 0 0);
   --sidebar-primary: oklch(0.68 0.22 264);
@@ -109,5 +114,22 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .brand-text-gradient {
+    background-image: linear-gradient(135deg, var(--brand-cyan), var(--brand-blue) 50%, var(--brand-magenta));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .brand-text-soft {
+    color: var(--brand-cyan);
+  }
+
+  .brand-text-accent {
+    color: var(--brand-magenta);
   }
 }

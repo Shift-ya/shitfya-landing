@@ -17,7 +17,7 @@ export function Cta() {
           />
 
           <div className="relative z-10 flex flex-col items-center gap-6">
-            <p className="text-xs font-semibold uppercase tracking-widest text-primary">
+            <p className="brand-text-gradient text-xs font-semibold uppercase tracking-widest">
               Ponte en contacto
             </p>
             <h2

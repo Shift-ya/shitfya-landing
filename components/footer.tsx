@@ -1,7 +1,7 @@
 const links = {
-  Servicios: ["Aplicaciones Web", "Desarrollo SaaS", "Diseño UI/UX", "API & Backend"],
+  Servicios: ["Aplicaciones Web", "Desarrollo SaaS", "Diseño UX/UI", "API & Backend"],
   Empresa: ["Acerca de", "Trabajo", "Proceso", "Blog"],
-  Conectar: ["hello@shft.ya", "Twitter", "LinkedIn", "GitHub"],
+  Conectar: ["hello@shft.ya", "Instagram", "LinkedIn", "GitHub"],
 }
 
 export function Footer() {
@@ -12,7 +12,9 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2 flex flex-col gap-4">
             <a href="#top" className="text-xl font-bold tracking-tight text-foreground">
-              shft<span className="text-primary">.</span>ya
+              <span className="text-foreground">shft</span>
+              <span className="brand-text-accent">.</span>
+              <span className="brand-text-gradient">ya</span>
             </a>
             <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">
               Estudio de software premium. Construimos productos digitales personalizados para startups y empresas ambiciosas.
@@ -21,11 +23,13 @@ export function Footer() {
             <div className="flex items-center gap-3 mt-2" aria-label="Social media links">
               {[
                 {
-                  label: "Twitter",
+                  label: "Instagram",
                   href: "#",
                   icon: (
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" strokeWidth="2" />
+                      <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="2" />
+                      <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" />
                     </svg>
                   ),
                 },
@@ -84,9 +88,6 @@ export function Footer() {
         <div className="mt-16 flex flex-col gap-2 border-t border-border pt-8 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-xs text-muted-foreground">
             &copy; {new Date().getFullYear()} shft.ya. Todos los derechos reservados.
-          </p>
-          <p className="text-xs text-muted-foreground">
-            Hecho con cuidado &mdash; sin plantillas.
           </p>
         </div>
       </div>

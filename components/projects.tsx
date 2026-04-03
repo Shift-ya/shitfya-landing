@@ -26,7 +26,7 @@ export function Projects() {
   return (
     <section className="py-24 px-6" id="work" aria-labelledby="projects-heading">
       <div className="mx-auto max-w-6xl">
-        <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-primary">
+        <p className="brand-text-gradient mb-4 text-xs font-semibold uppercase tracking-widest">
           Trabajo destacado
         </p>
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
@@ -38,7 +38,7 @@ export function Projects() {
           </h2>
           <a
             href="#contact"
-            className="text-sm font-medium text-primary hover:underline underline-offset-4"
+            className="brand-text-gradient text-sm font-medium hover:underline underline-offset-4"
           >
             Ver todos los proyectos &rarr;
           </a>

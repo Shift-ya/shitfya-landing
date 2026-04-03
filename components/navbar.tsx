@@ -26,8 +26,10 @@ export function Navbar() {
       >
         {/* Logo */}
         <a href="#top" className="flex items-center gap-2 group">
-          <span className="text-xl font-bold tracking-tight text-foreground group-hover:text-primary transition-colors">
-            shft<span className="text-primary">.</span>ya
+          <span className="text-xl font-bold tracking-tight transition-colors">
+            <span className="text-foreground group-hover:text-primary">Shift</span>
+            <span className="brand-text-accent">.</span>
+            <span className="brand-text-gradient">ya</span>
           </span>
         </a>
 
@@ -35,7 +37,7 @@ export function Navbar() {
         <ul className="hidden md:flex items-center gap-8" role="list">
           {[
             { label: "Servicios", href: "#services" },
-            { label: "Nuestro Trabajo", href: "#work" },
+            /* { label: "Nuestro Trabajo", href: "#work" }, */
             { label: "Proceso", href: "#process" },
             { label: "Acerca de", href: "#about" }
           ].map((item) => (

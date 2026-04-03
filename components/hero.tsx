@@ -58,11 +58,7 @@ export function Hero() {
       <h1 className="max-w-4xl text-balance text-5xl font-bold leading-tight tracking-tight text-foreground sm:text-6xl lg:text-7xl">
         Software personalizado,{" "}
         <span
-          className="bg-clip-text text-transparent"
-          style={{
-            backgroundImage:
-              "linear-gradient(135deg, oklch(0.72 0.18 264), oklch(0.60 0.22 280))",
-          }}
+          className="brand-text-gradient bg-clip-text text-transparent"
         >
           hecho para ir rápido
         </span>

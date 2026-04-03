@@ -3,7 +3,7 @@ import { Hero } from "@/components/hero"
 import { ValueProps } from "@/components/value-props"
 import { Services } from "@/components/services"
 import { Process } from "@/components/process"
-import { Projects } from "@/components/projects"
+/* import { Projects } from "@/components/projects" */
 import { Founders } from "@/components/founders"
 import { Testimonials } from "@/components/testimonials"
 import { Cta } from "@/components/cta"
@@ -17,7 +17,7 @@ export default function Home() {
       <ValueProps />
       <Services />
       <Process />
-      <Projects />
+      {/* <Projects /> */}
       <Founders />
       <Testimonials />
       <Cta />
