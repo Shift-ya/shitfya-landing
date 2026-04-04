@@ -14,10 +14,10 @@ const founders = [
     bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
   },
   {
-    name: "Nombre Fundador",
-    role: "CPO & Co-fundador",
+    name: "Dante Lugo",
+    role: "Frontend Developer & Co-fundador",
     image: "/founders/founder-3.jpg",
-    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
+    bio: "Dante Lugo es Frontend Developer y cofundador de shft.ya, donde lidera la construcción de interfaces modernas y productos digitales de alto impacto. Su enfoque combina velocidad, precisión técnica y una fuerte visión de producto para transformar ideas en soluciones reales.",
   },
 ]
 
