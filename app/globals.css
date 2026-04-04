@@ -109,9 +109,18 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   * {
     @apply border-border outline-ring/50;
   }
+
+  section[id] {
+    scroll-margin-top: 6rem;
+  }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -131,5 +140,32 @@
 
   .brand-text-accent {
     color: var(--brand-magenta);
+  }
+
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(32px) scale(0.985);
+    transition:
+      opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+
+  .scroll-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .scroll-reveal,
+  .scroll-reveal.is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
