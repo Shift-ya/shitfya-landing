@@ -48,7 +48,7 @@ export function Founders() {
             className="group flex flex-col items-center text-center"
           >
             {/* Image */}
-            <div className="relative mb-6 h-56 w-56 overflow-hidden rounded-2xl border border-border bg-muted transition-all duration-300 group-hover:border-primary/40 group-hover:shadow-[0_0_32px_oklch(0.68_0.22_264_/_0.18)]">
+            <div className="relative mb-6 h-56 w-56 overflow-hidden rounded-2xl border border-border bg-muted transition-all duration-300 group-hover:border-primary/40 group-hover:shadow-[0_0_32px_oklch(0.68_0.22_264/0.18)]">
               <img
                 src={founder.image}
                 alt={`Foto de ${founder.name}`}
