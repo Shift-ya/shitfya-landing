@@ -53,7 +53,7 @@ export function ValueProps() {
       <div className="mx-auto max-w-6xl">
         {/* Section label */}
         <p className="brand-text-gradient mb-4 text-xs font-semibold uppercase tracking-widest">
-          Por qué shft.ya
+          Por qué shift.ya
         </p>
         <h2
           id="value-heading"

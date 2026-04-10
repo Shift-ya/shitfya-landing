@@ -12,7 +12,7 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2 flex flex-col gap-4">
             <a href="#top" className="text-xl font-bold tracking-tight text-foreground">
-              <span className="text-foreground">shft</span>
+              <span className="text-foreground">shift</span>
               <span className="brand-text-accent">.</span>
               <span className="brand-text-gradient">ya</span>
             </a>
