@@ -17,7 +17,7 @@ const founders = [
     name: "Dante Lugo",
     role: "Frontend Developer & Co-fundador",
     image: "/founders/founder-3.jpg",
-    bio: "Dante Lugo es Frontend Developer y cofundador de shft.ya, donde lidera la construcción de interfaces modernas y productos digitales de alto impacto. Su enfoque combina velocidad, precisión técnica y una fuerte visión de producto para transformar ideas en soluciones reales.",
+    bio: "Dante Lugo es Frontend Developer y cofundador de shift.ya, donde lidera la construcción de interfaces modernas y productos digitales de alto impacto. Su enfoque combina velocidad, precisión técnica y una fuerte visión de producto para transformar ideas en soluciones reales.",
   },
 ]
 

@@ -7,25 +7,16 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 const _geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-mono' });
 
 export const metadata: Metadata = {
-  title: 'shft.ya — Custom Software Studio',
+  title: 'shift.ya — Custom Software Studio',
   description: 'We design and develop scalable digital products tailored to your business.',
   generator: 'v0.app',
   icons: {
     icon: [
       {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
+        url: '/logo-shiftya.png',
         type: 'image/svg+xml',
       },
     ],
-    apple: '/apple-icon.png',
   },
 }
 

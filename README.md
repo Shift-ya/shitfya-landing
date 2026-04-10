@@ -1,4 +1,4 @@
-# shft.ya Landing
+# shift.ya Landing
 
 Landing page construida con Next.js 16, React 19 y Tailwind CSS 4.
 

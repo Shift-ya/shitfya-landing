@@ -30,7 +30,7 @@ export function Cta() {
               Cuéntanos sobre tu proyecto. Responderemos dentro de 24 horas con una evaluación sincera y un camino a seguir.
             </p>
             <a
-              href="mailto:hello@shft.ya"
+              href="mailto:helloshiftya@gmail.com"
               className="mt-2 inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-3.5 text-sm font-semibold text-primary-foreground transition-all duration-200 hover:opacity-90 hover:scale-[1.02] active:scale-100"
               style={{ boxShadow: "0 0 32px oklch(0.68 0.22 264 / 0.4)" }}
             >

@@ -1,7 +1,7 @@
 const links = {
   Servicios: ["Aplicaciones Web", "Desarrollo SaaS", "Diseño UX/UI", "API & Backend"],
   Empresa: ["Acerca de", "Trabajo", "Proceso"],
-  Conectar: ["hello@shft.ya", "Instagram", "LinkedIn", "GitHub"],
+  Conectar: ["helloshiftya@gmail.com", "Instagram", "LinkedIn", "GitHub"],
 }
 
 export function Footer() {
@@ -87,7 +87,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="mt-16 flex flex-col gap-2 border-t border-border pt-8 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-xs text-muted-foreground">
-            &copy; {new Date().getFullYear()} shft.ya. Todos los derechos reservados.
+            &copy; {new Date().getFullYear()} shift.ya. Todos los derechos reservados.
           </p>
         </div>
       </div>

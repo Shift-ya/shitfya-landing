@@ -1,7 +1,7 @@
 const testimonials = [
   {
     quote:
-      "shft.ya entregó en 6 semanas lo que nuestra agencia anterior cotizó en 6 meses. La calidad fue mejor que cualquier cosa que hubiéramos enviado internamente.",
+      "shift.ya entregó en 6 semanas lo que nuestra agencia anterior cotizó en 6 meses. La calidad fue mejor que cualquier cosa que hubiéramos enviado internamente.",
     author: "Layla Hassan",
     role: "CTO, Finova",
     initials: "LH",
