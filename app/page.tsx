@@ -1,5 +1,4 @@
-import { Navbar } from "@/components/navbar"
-import { Hero } from "@/components/hero"
+import { HeroSection } from "@/components/ui/hero-section-1"
 import { ScrollReveal } from "@/components/scroll-reveal"
 import { ValueProps } from "@/components/value-props"
 import { Services } from "@/components/services"
@@ -13,8 +12,7 @@ import { Footer } from "@/components/footer"
 export default function Home() {
   return (
     <main>
-      <Navbar />
-      <Hero />
+      <HeroSection />
       <ScrollReveal>
         <ValueProps />
       </ScrollReveal>
