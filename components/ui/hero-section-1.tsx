@@ -33,7 +33,7 @@ export function HeroSection() {
     <>
       <HeroHeader />
       <div className="overflow-hidden">
-        <section className="relative pt-24 md:pt-36">
+        <section className="relative h-screen">
           <Waves
             className="absolute inset-0 -z-30"
             strokeColor="rgba(46, 215, 255, 0.44)"
@@ -64,8 +64,8 @@ export function HeroSection() {
             className="absolute inset-0 -z-10 size-full [background:radial-gradient(125%_125%_at_50%_100%,transparent_0%,var(--background)_240%)]"
           />
 
-          <div className="mx-auto max-w-7xl px-6 pb-24 md:pb-32">
-            <div className="text-center sm:mx-auto lg:mr-auto lg:mt-0">
+          <div className="mx-auto flex h-full w-full max-w-7xl items-center justify-center px-6">
+            <div className="w-full text-center sm:mx-auto lg:mr-auto lg:mt-0">
               <AnimatedGroup variants={transitionVariants}>
                 <Link
                   href="#contact"
