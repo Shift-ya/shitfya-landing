@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ArrowRight, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { AnimatedGroup } from '@/components/ui/animated-group';
+import { Waves } from '@/components/ui/wave-background';
 import { cn } from '@/lib/utils';
 
 const transitionVariants = {
@@ -32,55 +33,35 @@ export function HeroSection() {
     <>
       <HeroHeader />
       <div className="overflow-hidden">
-        <div
-          aria-hidden
-          className="z-2 absolute inset-0 pointer-events-none isolate opacity-50 contain-strict hidden lg:block"
-        >
-          <div className="w-140 h-320 -translate-y-87.5 absolute left-0 top-0 -rotate-45 rounded-full bg-[radial-gradient(68.54%_68.72%_at_55.02%_31.46%,hsla(0,0%,85%,.08)_0,hsla(0,0%,55%,.02)_50%,hsla(0,0%,45%,0)_80%)]" />
-          <div className="h-320 absolute left-0 top-0 w-56 -rotate-45 rounded-full bg-[radial-gradient(50%_50%_at_50%_50%,hsla(0,0%,85%,.06)_0,hsla(0,0%,45%,.02)_80%,transparent_100%)] [translate:5%_-50%]" />
-          <div className="h-320 -translate-y-87.5 absolute left-0 top-0 w-56 -rotate-45 bg-[radial-gradient(50%_50%_at_50%_50%,hsla(0,0%,85%,.04)_0,hsla(0,0%,45%,.02)_80%,transparent_100%)]" />
-        </div>
-
         <section className="relative pt-24 md:pt-36">
-          <AnimatedGroup
-            variants={{
-              container: {
-                visible: {
-                  transition: {
-                    delayChildren: 0.75,
-                  },
-                },
-              },
-              item: {
-                hidden: {
-                  opacity: 0,
-                  y: 20,
-                },
-                visible: {
-                  opacity: 1,
-                  y: 0,
-                  transition: {
-                    type: 'spring',
-                    bounce: 0.3,
-                    duration: 1.8,
-                  },
-                },
-              },
-            }}
-            className="absolute inset-0 -z-20"
-          >
-            <img
-              src="https://ik.imagekit.io/lrigu76hy/tailark/night-background.jpg?updatedAt=1745733451120"
-              alt="background"
-              className="absolute inset-x-0 top-56 -z-20 hidden lg:top-32 dark:block"
-              width="3276"
-              height="4095"
-            />
-          </AnimatedGroup>
+          <Waves
+            className="absolute inset-0 -z-30"
+            strokeColor="rgba(46, 215, 255, 0.44)"
+            pointerColor="rgba(46, 215, 255, 0.95)"
+            pointerSize={0.6}
+            pointerOpacity={0.95}
+            backgroundColor="transparent"
+          />
+          <Waves
+            className="absolute inset-0 -z-20 opacity-70 mix-blend-screen"
+            strokeColor="rgba(245, 44, 207, 0.24)"
+            pointerColor="rgba(127, 77, 255, 0.9)"
+            pointerSize={0.42}
+            pointerOpacity={0.8}
+            backgroundColor="transparent"
+          />
+          <div
+            aria-hidden
+            className="absolute inset-0 -z-10 bg-[radial-gradient(90%_70%_at_50%_20%,rgba(91,109,255,0.28)_0%,rgba(127,77,255,0.12)_40%,transparent_62%)]"
+          />
+          <div
+            aria-hidden
+            className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(8,9,18,0.14)_0%,rgba(8,9,18,0.48)_54%,rgba(8,9,18,0.78)_100%)]"
+          />
 
           <div
             aria-hidden
-            className="absolute inset-0 -z-10 size-full [background:radial-gradient(125%_125%_at_50%_100%,transparent_0%,var(--background)_75%)]"
+            className="absolute inset-0 -z-10 size-full [background:radial-gradient(125%_125%_at_50%_100%,transparent_0%,var(--background)_240%)]"
           />
 
           <div className="mx-auto max-w-7xl px-6 pb-24 md:pb-32">
@@ -130,23 +111,29 @@ export function HeroSection() {
                 className="mt-12 flex flex-col items-center justify-center gap-2 md:flex-row"
               >
                 <div key={1} className="bg-foreground/10 rounded-[14px] border p-0.5">
-                  <Button asChild size="lg" className="rounded-xl px-5 text-base">
+                  <Button 
+                    asChild 
+                    size="lg" 
+                    variant="transparent" 
+                    className="w-32 rounded-xl px-5 text-base">
                     <Link href="#contact">
                       <span className="text-nowrap">Comenzar</span>
                     </Link>
                   </Button>
                 </div>
-                <Button
-                  key={2}
-                  asChild
-                  size="lg"
-                  variant="ghost"
-                  className="h-10.5 rounded-xl px-5"
-                >
-                  <Link href="#services">
-                    <span className="text-nowrap">Ver servicios</span>
-                  </Link>
-                </Button>
+                <div key={2} className="bg-foreground/10 rounded-[14px] border p-0.5">
+                  <Button
+                    key={2}
+                    asChild
+                    size="lg"
+                    variant="transparent"
+                    className="w-32 rounded-xl px-5 text-base"
+                  >
+                    <Link href="#services">
+                      <span className="text-nowrap">Ver servicios</span>
+                    </Link>
+                  </Button>
+                </div>
               </AnimatedGroup>
             </div>
           </div>
@@ -165,6 +152,22 @@ const menuItems = [
 const HeroHeader = () => {
   const [menuState, setMenuState] = React.useState(false);
   const [isScrolled, setIsScrolled] = React.useState(false);
+
+  const handleSectionNav = React.useCallback(
+    (href: string) => (event: React.MouseEvent<HTMLAnchorElement>) => {
+      if (!href.startsWith('#')) return;
+      event.preventDefault();
+
+      const target = document.querySelector(href);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        window.history.replaceState(null, '', href);
+      }
+
+      setMenuState(false);
+    },
+    [],
+  );
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -203,12 +206,13 @@ const HeroHeader = () => {
               <ul className="flex gap-8 text-sm">
                 {menuItems.map((item) => (
                   <li key={item.href}>
-                    <Link
+                    <a
                       href={item.href}
+                      onClick={handleSectionNav(item.href)}
                       className="text-muted-foreground hover:text-accent-foreground block duration-150"
                     >
                       <span>{item.name}</span>
-                    </Link>
+                    </a>
                   </li>
                 ))}
               </ul>
@@ -219,31 +223,32 @@ const HeroHeader = () => {
                 <ul className="space-y-6 text-base">
                   {menuItems.map((item) => (
                     <li key={item.href}>
-                      <Link
+                      <a
                         href={item.href}
+                        onClick={handleSectionNav(item.href)}
                         className="text-muted-foreground hover:text-accent-foreground block duration-150"
                       >
                         <span>{item.name}</span>
-                      </Link>
+                      </a>
                     </li>
                   ))}
                 </ul>
               </div>
               <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-3 sm:space-y-0 md:w-fit">
-                <Button asChild variant="outline" size="sm" className={cn(isScrolled && 'lg:hidden')}>
-                  <Link href="#contact">
+                <Button asChild variant="transparent" size="sm" className={cn(isScrolled && 'lg:hidden', "max-md:hidden max-lg:hidden")}>
+                  <a href="#contact" onClick={handleSectionNav('#contact')}>
                     <span>Contacto</span>
-                  </Link>
+                  </a>
                 </Button>
-                <Button asChild size="sm" className={cn(isScrolled && 'lg:hidden')}>
-                  <Link href="#contact">
-                    <span>Agendar llamada</span>
-                  </Link>
-                </Button>
-                <Button asChild size="sm" className={cn(isScrolled ? 'lg:inline-flex' : 'hidden')}>
-                  <Link href="#contact">
+                
+                <Button
+                  asChild
+                  size="sm"
+                  className={cn('inline-flex', isScrolled ? 'lg:inline-flex' : 'lg:hidden')}
+                >
+                  <a href="#contact" onClick={handleSectionNav('#contact')}>
                     <span>Hablemos</span>
-                  </Link>
+                  </a>
                 </Button>
               </div>
             </div>
