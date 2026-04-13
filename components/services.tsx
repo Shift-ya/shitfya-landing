@@ -56,7 +56,7 @@ const services = [
 
 export function Services() {
   return (
-    <section className="py-24 px-6" id="services-grid" aria-labelledby="services-heading">
+    <section className="py-24 px-6" id="services" aria-labelledby="services-heading">
       <div className="mx-auto max-w-6xl">
         <p className="brand-text-gradient mb-4 text-xs font-semibold uppercase tracking-widest">
           Lo que construimos
