@@ -74,8 +74,8 @@ export function HeroSection() {
                   <span className="text-foreground text-sm">
                     Software a medida para equipos que necesitan velocidad
                   </span>
-                  <span className="dark:border-background block h-4 w-0.5 border-l bg-white dark:bg-zinc-700" />
-                  <div className="bg-background group-hover:bg-muted size-6 overflow-hidden rounded-full duration-500">
+                  <span className="dark:border-background block h-4 w-0.5 border-l bg-white dark:bg-zinc-700 max-md:hidden" />
+                  <div className="bg-background group-hover:bg-muted size-6 overflow-hidden rounded-full duration-500 max-md:hidden">
                     <div className="flex w-12 -translate-x-1/2 duration-500 ease-in-out group-hover:translate-x-0">
                       <span className="flex size-6">
                         <ArrowRight className="m-auto size-3" />
@@ -87,7 +87,7 @@ export function HeroSection() {
                   </div>
                 </Link>
 
-                <h1 className="mt-8 mx-auto max-w-4xl text-balance text-6xl md:text-7xl lg:mt-16 xl:text-[5.25rem]">
+                <h1 className="mt-8 mx-auto max-w-4xl text-balance text-6xl md:text-7xl lg:mt-16 xl:text-[5.25rem] max-md:text-5xl">
                   Software personalizado para crecer sin friccion
                 </h1>
                 <p className="mx-auto mt-8 max-w-2xl text-balance text-lg text-muted-foreground">
