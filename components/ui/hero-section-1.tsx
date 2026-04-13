@@ -133,7 +133,7 @@ export function HeroSection() {
                     variant="transparent"
                     className="w-32 rounded-xl px-5 text-base"
                   >
-                    <a href="#services-grid">
+                    <a href="#services">
                       <span className="text-nowrap">Ver servicios</span>
                     </a>
                   </Button>
