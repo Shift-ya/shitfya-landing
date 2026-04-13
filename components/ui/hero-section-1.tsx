@@ -61,7 +61,11 @@ export function HeroSection() {
 
           <div
             aria-hidden
-            className="absolute inset-0 -z-10 size-full [background:radial-gradient(125%_125%_at_50%_100%,transparent_0%,var(--background)_240%)]"
+            className="absolute inset-0 -z-10 hidden size-full lg:block [background:radial-gradient(125%_125%_at_50%_100%,transparent_0%,var(--background)_240%)]"
+          />
+          <div
+            aria-hidden
+            className="absolute inset-0 -z-10 size-full lg:hidden bg-[linear-gradient(180deg,transparent_80%,#000_100%)]"
           />
 
           <div className="mx-auto flex h-full w-full max-w-7xl items-center justify-center px-6">
