@@ -8,8 +8,8 @@ import { cn } from '@/lib/utils';
 
 const menuItems = [
   { name: 'Servicios', href: '#services' },
-  { name: 'Proceso', href: '#process' },
   { name: 'Acerca de', href: '#about' },
+  { name: 'Precios', href: '#price' },
 ];
 
 export const HeroHeader = () => {
