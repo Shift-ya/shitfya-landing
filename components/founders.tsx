@@ -52,7 +52,7 @@ const founders: Founder[] = [
         platform: 'instagram',
         url: 'https://instagram.com/san_sistema',
         username: '@san_sistema',
-        followers: 23.500,
+        followers: 23500,
         following: 40,
       },
     ],
@@ -128,6 +128,8 @@ export function Founders() {
     handleNext,
     handleDotClick,
     setIsAutoPlay,
+    handleTouchStart,
+    handleTouchEnd,
   } = useCarousel({ items: founders });
 
   return (
@@ -142,11 +144,34 @@ export function Founders() {
         description="Un equipo construido para hacer las cosas bien. Tres personas, un mismo norte."
       />
 
-      {/* Carousel */}
-      <div className="relative flex items-center justify-center px-12 lg:px-20 py-8">
-        <CarouselButton onClick={handlePrev} direction="prev" />
-        <CarouselButton onClick={handleNext} direction="next" />
+      {/* Desktop Grid */}
+      <div className="hidden md:grid md:grid-cols-3 gap-8 py-12">
+        {founders.map((founder) => (
+          <div key={founder.id} className="flex flex-col items-center text-center">
+            <div className="w-full h-96 rounded-xl overflow-hidden mb-6">
+              <ProfileCard
+                name={founder.name}
+                description={founder.bio}
+                image={founder.image}
+                socials={founder.socials ?? []}
+                gitHubUsername={founder.githubUsername}
+                enableAnimations={true}
+              />
+            </div>
+            <h3 className="text-xl font-bold text-foreground">{founder.name}</h3>
+            <p className="brand-text-gradient mt-1 text-xs font-medium uppercase tracking-widest">
+              {founder.role}
+            </p>
+          </div>
+        ))}
+      </div>
 
+      {/* Mobile Carousel */}
+      <div 
+        className="block md:hidden relative flex items-center justify-center px-12 py-8 overflow-hidden"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
         <CarouselContainer
           itemId={currentFounder.id}
           direction={direction}
@@ -165,19 +190,19 @@ export function Founders() {
           />
         </CarouselContainer>
       </div>
-      <FounderInfoCard
-        key={currentFounder.id}
-        name={currentFounder.name}
-        role={currentFounder.role}
-      />
+      <div className="block md:hidden">
+        <FounderInfoCard
+          id={currentFounder.id}
+          name={currentFounder.name}
+          role={currentFounder.role}
+        />
 
-      <CarouselDots
-        total={founders.length}
-        current={currentIndex}
-        onDotClick={handleDotClick}
-      />
-
-      
+        <CarouselDots
+          total={founders.length}
+          current={currentIndex}
+          onDotClick={handleDotClick}
+        />
+      </div>
     </section>
   );
 }

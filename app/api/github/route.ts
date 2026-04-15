@@ -15,13 +15,7 @@ export async function GET(request: NextRequest) {
   try {
     const user = await getGitHubUser(username);
     
-    if (!user) {
-      return NextResponse.json(
-        { error: 'User not found' },
-        { status: 404 }
-      );
-    }
-
+    // Return null user gracefully instead of 404
     return NextResponse.json(user);
   } catch (error) {
     console.error('API error:', error);

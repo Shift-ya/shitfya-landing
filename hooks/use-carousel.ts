@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 
 interface CarouselItem {
   id: string;
@@ -20,6 +20,9 @@ interface UseCarouselReturn<T extends CarouselItem> {
   handleNext: () => void;
   handleDotClick: (index: number) => void;
   handleFollow: (userId: string) => void;
+  touchStartRef: React.MutableRefObject<number>;
+  handleTouchStart: (e: React.TouchEvent) => void;
+  handleTouchEnd: (e: React.TouchEvent) => void;
 }
 
 export function useCarousel<T extends CarouselItem>({
@@ -30,6 +33,7 @@ export function useCarousel<T extends CarouselItem>({
   const [direction, setDirection] = useState(0);
   const [followedUsers, setFollowedUsers] = useState<Set<string>>(new Set());
   const [isAutoPlay, setIsAutoPlay] = useState(true);
+  const touchStartRef = useRef(0);
 
   const currentItem = items[currentIndex];
 
@@ -73,6 +77,32 @@ export function useCarousel<T extends CarouselItem>({
     });
   }, []);
 
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    touchStartRef.current = e.touches[0].clientX;
+    setIsAutoPlay(false);
+  }, []);
+
+  const handleTouchEnd = useCallback((e: React.TouchEvent) => {
+    if (touchStartRef.current === 0) return;
+    
+    const touchEnd = e.changedTouches[0].clientX;
+    const diff = touchStartRef.current - touchEnd;
+    const minSwipeDistance = 50;
+
+    if (Math.abs(diff) > minSwipeDistance) {
+      if (diff > 0) {
+        // Deslizar a la izquierda - siguiente
+        handleNext();
+      } else {
+        // Deslizar a la derecha - anterior
+        handlePrev();
+      }
+    }
+    
+    touchStartRef.current = 0;
+    setIsAutoPlay(true);
+  }, [handleNext, handlePrev]);
+
   return {
     currentIndex,
     direction,
@@ -84,5 +114,8 @@ export function useCarousel<T extends CarouselItem>({
     handleNext,
     handleDotClick,
     handleFollow,
+    touchStartRef,
+    handleTouchStart,
+    handleTouchEnd,
   };
 }

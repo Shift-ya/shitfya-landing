@@ -29,7 +29,7 @@ export function useGitHubUser(username: string | null | undefined) {
       } catch (err) {
         const message = err instanceof Error ? err.message : 'Failed to fetch GitHub user';
         setError(message);
-        console.error('GitHub fetch error:', err);
+        setGitHubUser(null);
       } finally {
         setLoading(false);
       }

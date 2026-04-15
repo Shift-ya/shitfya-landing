@@ -3,13 +3,13 @@ import { motion } from 'framer-motion';
 interface FounderInfoCardProps {
   name: string;
   role: string;
-  key?: string | number;
+  id?: string;
 }
 
-export function FounderInfoCard({ name, role, key }: FounderInfoCardProps) {
+export function FounderInfoCard({ name, role, id }: FounderInfoCardProps) {
   return (
     <motion.div
-      key={key}
+      key={id}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}

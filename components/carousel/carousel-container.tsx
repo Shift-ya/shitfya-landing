@@ -21,7 +21,7 @@ export function CarouselContainer({
   transition,
   onMouseEnter,
   onMouseLeave,
-  containerClassName = 'relative h-96 w-full flex items-center justify-center overflow-visible',
+  containerClassName = 'relative h-96 w-full flex items-center justify-center overflow-hidden',
   height,
 }: CarouselContainerProps) {
   return (
@@ -35,7 +35,7 @@ export function CarouselContainer({
           animate="center"
           exit="exit"
           transition={transition}
-          className="absolute inset-0 flex items-center justify-center overflow-visible"
+          className="absolute inset-0 flex items-center justify-center"
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
         >
