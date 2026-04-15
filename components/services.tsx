@@ -24,34 +24,7 @@ const services = [
         <circle cx="4" cy="18" r="1.5" fill="currentColor" />
       </svg>
     ),
-  },
-  {
-    title: "Diseño UX/UI",
-    description:
-      "Diseño que convierte. Creamos interfaces intuitivas basadas en investigación de usuarios y probadas con usuarios reales.",
-    tag: "Diseño · Investigación",
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
-        <path d="M12 19l7-7 3 3-7 7-3-3z" />
-        <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" />
-        <path d="M2 2l7.586 7.586" />
-        <circle cx="11" cy="11" r="2" />
-      </svg>
-    ),
-  },
-  {
-    title: "APIs y Sistemas Backend",
-    description:
-      "APIs robustas, microservicios y pipelines de datos. Construidos para confiabilidad, seguridad y experiencia del desarrollador.",
-    tag: "Backend · Infraestructura",
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
-        <ellipse cx="12" cy="5" rx="9" ry="3" />
-        <path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5" />
-        <path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3" />
-      </svg>
-    ),
-  },
+  }
 ]
 
 export function Services() {

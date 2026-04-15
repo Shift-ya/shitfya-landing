@@ -15,17 +15,14 @@ export default function Home() {
       <ScrollReveal>
         <Services />
       </ScrollReveal>
-      <ScrollReveal delay={80}>
-        <Process />
-      </ScrollReveal>
       {/* <Projects /> */}
-      <ScrollReveal delay={120}>
+      <ScrollReveal delay={80}>
         <Founders />
       </ScrollReveal>
-      <ScrollReveal delay={160}>
+      {/* <ScrollReveal delay={120}>
         <Testimonials />
-      </ScrollReveal>
-      <ScrollReveal delay={200}>
+      </ScrollReveal> */}
+      <ScrollReveal delay={120}>
         <Cta />
       </ScrollReveal>
       <Footer />

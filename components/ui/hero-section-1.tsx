@@ -95,7 +95,7 @@ export function HeroSection() {
                   Software personalizado para crecer sin friccion
                 </h1>
                 <p className="mx-auto mt-8 max-w-2xl text-balance text-lg text-muted-foreground">
-                  Disenamos y desarrollamos productos digitales escalables adaptados a
+                  Diseñamos y desarrollamos productos digitales escalables adaptados a
                   tu negocio, sin plantillas genericas.
                 </p>
               </AnimatedGroup>
