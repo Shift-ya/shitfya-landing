@@ -6,7 +6,6 @@ import { Process } from "@/components/process"
 import { Founders } from "@/components/founders"
 import { Testimonials } from "@/components/testimonials"
 import { Cta } from "@/components/cta"
-import { Footer } from "@/components/footer"
 
 export default function Home() {
   return (
@@ -25,7 +24,6 @@ export default function Home() {
       <ScrollReveal delay={120}>
         <Cta />
       </ScrollReveal>
-      <Footer />
     </main>
   )
 }
