@@ -117,8 +117,8 @@ export const HeroHeader = () => {
                 <Button
                   size="sm"
                   onClick={() => {
-                    const turnoproUrl = process.env.NEXT_PUBLIC_TURNOPRO_URL || 'https://app.shiftya.online';
-                    const loginUrl = `${turnoproUrl}/?page=login&from=landing`;
+                    const turnowUrl = process.env.NEXT_PUBLIC_TURNOW_URL || 'https://app.shiftya.online';
+                    const loginUrl = `${turnowUrl}/?page=login&from=landing`;
                     window.location.href = loginUrl;
                   }}
                   className="inline-flex"
