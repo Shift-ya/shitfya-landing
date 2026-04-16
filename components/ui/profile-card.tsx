@@ -1,8 +1,7 @@
 'use client';
 
 import { motion, useReducedMotion, AnimatePresence } from 'framer-motion';
-import { Check, Users, UserCheck } from 'lucide-react';
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo } from 'react';
 import { cn } from '@/lib/utils';
 import { SocialDropdown, type SocialLink } from '@/components/ui/social-dropdown';
 import { useGitHubUser } from '@/hooks/use-github-user';
@@ -12,13 +11,13 @@ interface ProfileCardProps {
   description?: string;
   image?: string;
   isVerified?: boolean;
-  followers?: number;
-  following?: number;
   enableAnimations?: boolean;
   className?: string;
   socials?: SocialLink[];
   onSelectSocial?: (social: SocialLink) => void;
   gitHubUsername?: string;
+  width?: string;
+  height?: string;
 }
 
 // ========================================
@@ -137,20 +136,8 @@ function ProfileImage({ image, name, isDropdownOpen }: ProfileImageProps) {
           ease: 'easeInOut',
         }}
       />
-
-      {/* Smooth Blur Overlay - Multiple layers for seamless fade */}
-      <motion.div
-        className="absolute inset-0 bg-linear-to-t from-background/95 via-background/50 to-transparent"
-        animate={{
-          opacity: isDropdownOpen ? 0.95 : 0.85,
-        }}
-        transition={{
-          duration: 0.3,
-          ease: 'easeInOut',
-        }}
-      />
-      <div className="absolute bottom-0 left-0 right-0 h-64 bg-linear-to-t from-background/90 via-background/40 to-transparent backdrop-blur-[1px]" />
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-linear-to-t from-background/85 via-background/40 to-transparent backdrop-blur-sm" />
+      <div className="absolute bottom-0 left-0 right-0 h-64 bg-linear-to-t from-background/90 via-background/40 to-transparent " />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-linear-to-t from-background/85 via-background/40 to-transparent" />
     </>
   );
 }
@@ -164,7 +151,7 @@ function ProfileHeader({ name }: ProfileHeaderProps) {
     <motion.div variants={itemVariants} className="flex items-center gap-2">
       {/* Animated Name with Letter Stagger */}
       <motion.h2
-        className="text-2xl font-bold text-foreground"
+        className="text-xl sm:text-2xl font-bold text-foreground leading-tight wrap-break-word overflow-wrap-break-word"
         variants={{
           visible: {
             transition: {
@@ -173,14 +160,18 @@ function ProfileHeader({ name }: ProfileHeaderProps) {
           },
         }}
       >
-        {name.split('').map((letter, index) => (
-          <motion.span
-            key={index}
-            variants={letterVariants}
-            className="inline-block"
-          >
-            {letter === ' ' ? '\u00A0' : letter}
-          </motion.span>
+        {name.split(' ').map((word, wordIndex) => (
+          <span key={wordIndex} className="inline-block mr-1">
+            {word.split('').map((letter, letterIndex) => (
+              <motion.span
+                key={letterIndex}
+                variants={letterVariants}
+                className="inline-block"
+              >
+                {letter}
+              </motion.span>
+            ))}
+          </span>
         ))}
       </motion.h2>
     </motion.div>
@@ -199,44 +190,6 @@ function ProfileDescription({ description }: ProfileDescriptionProps) {
     >
       {description}
     </motion.p>
-  );
-}
-
-interface ProfileStatsProps {
-  followers: number;
-  following: number;
-  isDropdownOpen: boolean;
-  hasSelectedSocial: boolean;
-}
-
-function ProfileStats({ followers, following, isDropdownOpen, hasSelectedSocial }: ProfileStatsProps) {
-  return (
-    <AnimatePresence mode="wait">
-      {isDropdownOpen && hasSelectedSocial && (
-        <motion.div
-          key="stats"
-          variants={itemVariants}
-          initial="hidden"
-          animate="visible"
-          exit="hidden"
-          className="flex items-center gap-6 pt-2"
-        >
-          {/* Followers */}
-          <div className="flex items-center gap-2 text-muted-foreground">
-            <Users className="w-4 h-4" />
-            <span className="font-semibold text-foreground">{followers}</span>
-            <span className="text-sm">seguidores</span>
-          </div>
-
-          {/* Following */}
-          <div className="flex items-center gap-2 text-muted-foreground">
-            <UserCheck className="w-4 h-4" />
-            <span className="font-semibold text-foreground">{following}</span>
-            <span className="text-sm">seguidos</span>
-          </div>
-        </motion.div>
-      )}
-    </AnimatePresence>
   );
 }
 
@@ -284,40 +237,36 @@ export function ProfileCard({
   name = '',
   description = '',
   image = 'https://images.unsplash.com/photo-1502685104226-ee32379fefbe?w=800&h=800&fit=crop&auto=format&q=80',
-  followers = 0,
-  following = 0,
   enableAnimations = true,
   className,
   socials = [],
   onSelectSocial = () => {},
   gitHubUsername,
+  width = 'w-80',
+  height = 'h-96',
 }: ProfileCardProps) {
   const [hovered, setHovered] = useState(false);
-  const [selectedSocial, setSelectedSocial] = useState<SocialLink | null>(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { gitHubUser } = useGitHubUser(gitHubUsername);
   const shouldReduceMotion = useReducedMotion();
   const shouldAnimate = enableAnimations && !shouldReduceMotion;
 
-  // Calculate current followers/following based on selected social
-  const currentStats = useMemo(() => {
-    if (selectedSocial?.platform === 'github' && gitHubUser) {
-      return {
-        followers: gitHubUser.followers,
-        following: gitHubUser.following,
-      };
-    }
-    if (selectedSocial) {
-      return {
-        followers: selectedSocial.followers ?? followers,
-        following: selectedSocial.following ?? following,
-      };
-    }
-    return { followers, following };
-  }, [selectedSocial, gitHubUser, followers, following]);
+  // Enriquecer sociales con datos de GitHub
+  const enrichedSocials = useMemo(() => {
+    if (!gitHubUser) return socials;
+    
+    return socials.map(social => {
+      if (social.platform === 'github' && gitHubUser.created_at) {
+        return {
+          ...social,
+          created_at: gitHubUser.created_at,
+        };
+      }
+      return social;
+    });
+  }, [socials, gitHubUser]);
 
   const handleSelectSocial = (social: SocialLink) => {
-    setSelectedSocial(social);
     onSelectSocial(social);
   };
 
@@ -334,7 +283,9 @@ export function ProfileCard({
       whileHover="hover"
       variants={getContainerVariants(shouldAnimate)}
       className={cn(
-        'relative w-80 h-96 rounded-3xl border border-border/20 shadow-xl shadow-black/5 cursor-pointer group backdrop-blur-sm overflow-visible z-10 transition-[z-index]',
+        'relative rounded-3xl border border-border/20 shadow-xl shadow-black/5 cursor-pointer group backdrop-blur-sm overflow-hidden z-10 transition-[z-index]',
+        width,
+        height,
         isDropdownOpen || hovered ? 'z-20' : 'z-10',
         'dark:shadow-black/20',
         className
@@ -354,14 +305,8 @@ export function ProfileCard({
       >
         <ProfileHeader name={name} />
         <ProfileDescription description={description} />
-        <ProfileStats
-          followers={currentStats.followers}
-          following={currentStats.following}
-          isDropdownOpen={isDropdownOpen}
-          hasSelectedSocial={selectedSocial !== null}
-        />
         <ProfileButton
-          socials={socials}
+          socials={enrichedSocials}
           onSelectSocial={handleSelectSocial}
           onOpenChange={handleOpenChange}
         />

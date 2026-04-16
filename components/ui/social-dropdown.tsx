@@ -11,6 +11,8 @@ export interface SocialLink {
   username?: string;
   followers?: number;
   following?: number;
+  public_repos?: number;
+  created_at?: string;
 }
 
 interface SocialDropdownProps {
@@ -59,7 +61,17 @@ export function SocialDropdown({
 
   const handleSelectSocial = (social: SocialLink) => {
     onSelectSocial?.(social);
-    // No cerramos para que vea el cambio
+    // Abre el link en una nueva pestaña
+    if (social.url) {
+      window.open(social.url, '_blank');
+    }
+  };
+
+  const getGitHubYears = (createdAt?: string): number => {
+    if (!createdAt) return 0;
+    const creationDate = new Date(createdAt);
+    const now = new Date();
+    return Math.floor((now.getTime() - creationDate.getTime()) / (1000 * 60 * 60 * 24 * 365.25));
   };
 
   return (
@@ -135,9 +147,11 @@ export function SocialDropdown({
                     </p>
                   </div>
                   <div className="text-right text-xs">
-                    {social.followers && (
+                    {social.platform === 'github' && social.created_at ? (
+                      <p>{getGitHubYears(social.created_at)} años en GitHub</p>
+                    ) : social.followers ? (
                       <p>{social.followers.toLocaleString()} seguidores</p>
-                    )}
+                    ) : null}
                   </div>
                 </motion.button>
               );

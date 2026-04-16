@@ -99,8 +99,6 @@ const founders: Founder[] = [
         platform: 'github',
         url: 'https://github.com/dantel8',
         username: '@dantel8',
-        followers: 1650,
-        following: 120,
       },
       {
         platform: 'linkedin',
@@ -145,10 +143,10 @@ export function Founders() {
       />
 
       {/* Desktop Grid */}
-      <div className="hidden md:grid md:grid-cols-3 gap-8 py-12">
+      <div className="hidden md:grid md:grid-cols-3 lg:grid-cols-3 gap-6 md:gap-8 py-12 auto-cols-fr">
         {founders.map((founder) => (
           <div key={founder.id} className="flex flex-col items-center text-center">
-            <div className="w-full h-96 rounded-xl overflow-hidden mb-6">
+            <div className="w-full max-w-sm">
               <ProfileCard
                 name={founder.name}
                 description={founder.bio}
@@ -156,9 +154,11 @@ export function Founders() {
                 socials={founder.socials ?? []}
                 gitHubUsername={founder.githubUsername}
                 enableAnimations={true}
+                width="w-full"
+                height="h-96"
               />
             </div>
-            <h3 className="text-xl font-bold text-foreground">{founder.name}</h3>
+            <h3 className="text-xl font-bold text-foreground mt-6">{founder.name}</h3>
             <p className="brand-text-gradient mt-1 text-xs font-medium uppercase tracking-widest">
               {founder.role}
             </p>
@@ -168,7 +168,7 @@ export function Founders() {
 
       {/* Mobile Carousel */}
       <div 
-        className="block md:hidden relative flex items-center justify-center px-12 py-8 overflow-hidden"
+        className="md:hidden relative flex items-center justify-center px-4 py-8 overflow-hidden"
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
@@ -187,6 +187,8 @@ export function Founders() {
             socials={currentFounder.socials ?? []}
             gitHubUsername={currentFounder.githubUsername}
             enableAnimations={true}
+            width="w-80"
+            height="h-96"
           />
         </CarouselContainer>
       </div>

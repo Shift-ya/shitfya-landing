@@ -92,7 +92,7 @@ export function HeroSection() {
                 </Link>
 
                 <h1 className="mt-8 mx-auto max-w-4xl text-balance text-6xl md:text-7xl lg:mt-16 xl:text-[5.25rem] max-md:text-5xl">
-                  Software personalizado para crecer sin friccion
+                  Software personalizado para crecer
                 </h1>
                 <p className="mx-auto mt-8 max-w-2xl text-balance text-lg text-muted-foreground">
                   Diseñamos y desarrollamos productos digitales escalables adaptados a
