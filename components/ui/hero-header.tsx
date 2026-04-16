@@ -113,6 +113,18 @@ export const HeroHeader = () => {
                     <span>Hablemos</span>
                   </a>
                 </Button>
+
+                <Button
+                  size="sm"
+                  onClick={() => {
+                    const turnoproUrl = process.env.NEXT_PUBLIC_TURNOPRO_URL || 'https://app.shiftya.online';
+                    const loginUrl = `${turnoproUrl}/?page=login&from=landing`;
+                    window.location.href = loginUrl;
+                  }}
+                  className="inline-flex"
+                >
+                  <span>Iniciar sesión</span>
+                </Button>
               </div>
             </div>
           </div>
