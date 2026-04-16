@@ -95,7 +95,7 @@ export function useGitHubUser(username: string | null | undefined) {
         if (pendingRequests.has(username)) {
           const result = await pendingRequests.get(username);
           if (mountedRef.current) {
-            setGitHubUser(result);
+            setGitHubUser(result || null);
             setLoading(false);
           }
           return;
