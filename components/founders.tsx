@@ -59,7 +59,7 @@ const founders: Founder[] = [
   },
   {
     id: 'founder-2',
-    name: 'Maria Luz Piro',
+    name: 'María Luz Piro',
     role: 'Fullstack & Co-fundadora',
     bio: '',
     image: '/founders/founder-2.jpg',
@@ -73,7 +73,7 @@ const founders: Founder[] = [
       },
       {
         platform: 'linkedin',
-        url: 'linkedin.com/in/maría-luz-piro-655466234',
+        url: 'www.linkedin.com/in/marialuzpiro',
         username: '@marialuzpiro',
         followers: 477,
       },
