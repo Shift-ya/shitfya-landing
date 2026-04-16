@@ -2,7 +2,7 @@
 
 'use client';
 
-import { ProfileCard } from '@/components/ui/profile-card';
+import { ProfileCard } from '@/components/profile-card';
 import { useCarousel } from '@/hooks/use-carousel';
 import type { SocialLink } from '@/components/ui/social-dropdown';
 import {
