@@ -6,6 +6,7 @@ import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { AnimatedGroup } from '@/components/ui/animated-group';
 import { Waves } from '@/components/ui/wave-background';
+import { MeetingSchedulerDialog } from '@/components/meeting-scheduler-dialog';
 import { HeroHeader } from './hero-header';
 
 const transitionVariants = {
@@ -115,15 +116,10 @@ export function HeroSection() {
                 className="mt-12 flex flex-col items-center justify-center gap-2 md:flex-row"
               >
                 <div key={1} className="bg-foreground/10 rounded-[14px] border p-0.5">
-                  <Button 
-                    asChild 
-                    size="lg" 
-                    variant="transparent" 
-                    className="w-32 rounded-xl px-5 text-base">
-                    <a href="#contact">
-                      <span className="text-nowrap">Comenzar</span>
-                    </a>
-                  </Button>
+                  <MeetingSchedulerDialog
+                    triggerClassName="w-40 rounded-xl px-5 text-base"
+                    triggerLabel="Agendar reunion"
+                  />
                 </div>
                 <div key={2} className="bg-foreground/10 rounded-[14px] border p-0.5">
                   <Button

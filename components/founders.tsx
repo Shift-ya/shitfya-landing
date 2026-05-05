@@ -21,20 +21,37 @@ interface Founder {
   role: string;
   bio?: string;
   image: string;
+  imagePosition?: string;
   isVerified?: boolean;
   socials?: SocialLink[];
   githubUsername?: string;
+  likesTitle?: string;
+  likesText?: string;
+  likesLinks?: Array<{ label: string; url: string }>;
 }
 
 const founders: Founder[] = [
   {
     id: 'founder-1',
     name: 'Santiago Cofman',
-    role: 'Backend & Co-fundador',
+    role: 'Lic. en Sistemas · Backend · Co-fundador',
     bio: '',
     image: '/founders/founder-1.jpg',
+    imagePosition: '50% 28%',
     isVerified: true,
     githubUsername: 'Santicof',
+    likesTitle: 'Algo que me gusta',
+    likesText: 'Hago videos de humor y tecnologia en mi Instagram.',
+    likesLinks: [
+      {
+        label: 'Ver playlist en YouTube',
+        url: 'https://www.youtube.com/playlist?list=PLeqZo_bDgyNwJbmSu4GJcWSRiRzQYMAw_',
+      },
+      {
+        label: 'Ver Instagram @san_sistema',
+        url: 'https://instagram.com/san_sistema',
+      },
+    ],
     socials: [
       {
         platform: 'github',
@@ -60,11 +77,13 @@ const founders: Founder[] = [
   {
     id: 'founder-2',
     name: 'María Luz Piro',
-    role: 'Fullstack & Co-fundadora',
+    role: 'Analista de Sistemas · Fullstack · Co-fundadora',
     bio: '',
     image: '/founders/founder-2.jpg',
     isVerified: true,
     githubUsername: 'MariaLuz18',
+    likesTitle: 'Algo que le gusta a Maria',
+    likesText: 'Espacio para completar con lo que le gusta a Maria.',
     socials: [
       {
         platform: 'github',
@@ -89,11 +108,13 @@ const founders: Founder[] = [
   {
     id: 'founder-3',
     name: 'Dante Lugo',
-    role: 'Frontend Developer & Co-fundador',
+    role: 'Analista de Sistemas · Frontend Developer · Co-fundador',
     bio: '',
     image: '/founders/founder-3.jpg',
     isVerified: true,
     githubUsername: 'dantel8',
+    likesTitle: 'Algo que le gusta a Dante',
+    likesText: 'Espacio para completar con lo que le gusta a Dante.',
     socials: [
       {
         platform: 'github',
@@ -139,7 +160,7 @@ export function Founders() {
       <SectionHeader
         badge="El equipo"
         title="Los fundadores"
-        description="Un equipo construido para hacer las cosas bien. Tres personas, un mismo norte."
+        description="Equipo fundador con formacion en sistemas y experiencia real en producto, desarrollo y comunicacion tecnologica."
       />
 
       {/* Desktop Grid */}
@@ -149,8 +170,8 @@ export function Founders() {
             <div className="w-full max-w-sm">
               <ProfileCard
                 name={founder.name}
-                description={founder.bio}
                 image={founder.image}
+                imagePosition={founder.imagePosition}
                 socials={founder.socials ?? []}
                 gitHubUsername={founder.githubUsername}
                 enableAnimations={true}
@@ -162,6 +183,7 @@ export function Founders() {
             <p className="brand-text-gradient mt-1 text-xs font-medium uppercase tracking-widest">
               {founder.role}
             </p>
+            <FounderLikesCard founder={founder} />
           </div>
         ))}
       </div>
@@ -182,8 +204,8 @@ export function Founders() {
         >
           <ProfileCard
             name={currentFounder.name}
-            description={currentFounder.bio}
             image={currentFounder.image}
+            imagePosition={currentFounder.imagePosition}
             socials={currentFounder.socials ?? []}
             gitHubUsername={currentFounder.githubUsername}
             enableAnimations={true}
@@ -198,6 +220,7 @@ export function Founders() {
           name={currentFounder.name}
           role={currentFounder.role}
         />
+        <FounderLikesCard founder={currentFounder} compact />
 
         <CarouselDots
           total={founders.length}
@@ -206,5 +229,45 @@ export function Founders() {
         />
       </div>
     </section>
+  );
+}
+
+function FounderLikesCard({ founder, compact = false }: { founder: Founder; compact?: boolean }) {
+  if (!founder.likesTitle && !founder.likesText && (!founder.likesLinks || founder.likesLinks.length === 0)) {
+    return null;
+  }
+
+  return (
+    <div
+      className={`mt-4 w-full rounded-2xl border border-primary/40 bg-linear-to-br from-card/95 via-card/80 to-background/80 p-4 text-left shadow-[0_12px_34px_rgba(46,215,255,0.12)] ring-1 ring-primary/25 backdrop-blur-sm ${
+        compact ? 'max-w-sm mx-auto' : 'max-w-sm'
+      }`}
+    >
+      {founder.likesTitle ? (
+        <p className="brand-text-gradient text-[11px] font-semibold uppercase tracking-widest">
+          {founder.likesTitle}
+        </p>
+      ) : null}
+
+      {founder.likesText ? (
+        <p className="mt-2 text-sm leading-relaxed text-foreground/90">{founder.likesText}</p>
+      ) : null}
+
+      {founder.likesLinks && founder.likesLinks.length > 0 ? (
+        <div className="mt-3 flex flex-col gap-2">
+          {founder.likesLinks.map((item) => (
+            <a
+              key={item.url}
+              href={item.url}
+              target="_blank"
+              rel="noreferrer"
+              className="brand-text-gradient text-sm font-semibold hover:opacity-90"
+            >
+              {item.label}
+            </a>
+          ))}
+        </div>
+      ) : null}
+    </div>
   );
 }

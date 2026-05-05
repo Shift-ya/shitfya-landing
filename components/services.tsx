@@ -11,39 +11,39 @@ type ServicesType = {
 
 const services: ServicesType[] = [
   {
-    title: "Faaast",
+    title: "Entrega agil",
     description:
-      "Rendimiento extremo optimizado para velocidad. Aplicaciones que responden al instante, escalables y eficientes.",
+      "Ciclos cortos de desarrollo, iteraciones continuas y releases predecibles para acelerar el time-to-market.",
     icon: Zap,
   },
   {
-    title: "Poderoso",
+    title: "Arquitectura robusta",
     description:
-      "Funcionalidades completas y potentes. Desde la idea hasta producción, con todas las herramientas que necesitas.",
+      "Sistemas confiables y mantenibles, diseñados para soportar crecimiento de usuarios, datos y complejidad.",
     icon: Cpu,
   },
   {
-    title: "Seguridad",
+    title: "Seguridad aplicada",
     description:
-      "Seguridad de nivel empresarial. Encriptación, autenticación y cumplimiento normativo integrados desde el inicio.",
+      "Autenticacion, cifrado y buenas practicas integradas desde la primera linea de codigo.",
     icon: Fingerprint,
   },
   {
-    title: "Personalización",
+    title: "Soluciones a medida",
     description:
-      "Completamente personalizable. Adaptamos cada solución a tus necesidades específicas y flujos de negocio.",
+      "Cada producto se diseña en funcion de tu modelo operativo, procesos internos y necesidades comerciales.",
     icon: Pencil,
   },
   {
-    title: "Control",
+    title: "Visibilidad y control",
     description:
-      "Control total sobre tu infraestructura. Monitoreo, analytics y dashboards para tomar decisiones informadas.",
+      "Metricas, monitoreo y trazabilidad para tomar decisiones con datos y mejorar continuamente.",
     icon: Settings2,
   },
   {
-    title: "Diseñado para IA",
+    title: "Preparado para IA",
     description:
-      "Preparado para IA y machine learning. Integraciones nativas, APIs modernas y arquitectura escalable.",
+      "Arquitectura lista para integrar modelos, automatizaciones y flujos inteligentes cuando tu negocio lo requiera.",
     icon: Sparkles,
   }
 ]
@@ -53,7 +53,7 @@ export function Services() {
     <section className="py-24 px-6" id="services" aria-labelledby="services-heading">
       <div className="mx-auto max-w-6xl">
         <p className="brand-text-gradient mb-4 text-xs font-semibold uppercase tracking-widest">
-          Lo que construimos
+          Capacidades clave
         </p>
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <h2
@@ -63,7 +63,7 @@ export function Services() {
             Nuestros servicios
           </h2>
           <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">
-            De la idea a la producción — manejamos todo. Elige lo que necesitas, o déjanos aconsejar.
+            Acompanamos todo el proceso: discovery, diseno, desarrollo, despliegue y evolucion continua.
           </p>
         </div>
 

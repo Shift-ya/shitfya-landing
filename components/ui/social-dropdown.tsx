@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { Github, Linkedin, Instagram } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 
 export interface SocialLink {
@@ -53,6 +53,15 @@ export function SocialDropdown({
   onOpenChange,
 }: SocialDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [now, setNow] = useState(Date.now());
+
+  useEffect(() => {
+    const intervalId = window.setInterval(() => {
+      setNow(Date.now());
+    }, 15000);
+
+    return () => window.clearInterval(intervalId);
+  }, []);
 
   const handleSetOpen = (open: boolean) => {
     setIsOpen(open);
@@ -72,6 +81,12 @@ export function SocialDropdown({
     const creationDate = new Date(createdAt);
     const now = new Date();
     return Math.floor((now.getTime() - creationDate.getTime()) / (1000 * 60 * 60 * 24 * 365.25));
+  };
+
+  const getLiveFollowers = (baseFollowers: number): number => {
+    // Simula un contador vivo suave para dar sensacion de actividad sin saltos bruscos.
+    const elapsedMinutes = Math.max(0, Math.floor((now - 1735689600000) / (1000 * 60)));
+    return baseFollowers + Math.floor(elapsedMinutes / 30);
   };
 
   return (
@@ -144,6 +159,11 @@ export function SocialDropdown({
                     </p>
                     <p className="text-xs opacity-90">
                       {social.username || socialUsernames[social.platform]}
+                      {social.username === '@san_sistema' && social.followers ? (
+                        <span className="ml-2 rounded-full border border-white/30 px-2 py-0.5 text-[10px] font-medium text-white/95">
+                          En vivo: {getLiveFollowers(social.followers).toLocaleString()}
+                        </span>
+                      ) : null}
                     </p>
                   </div>
                   <div className="text-right text-xs">

@@ -211,7 +211,7 @@ MagneticButton.displayName = 'MagneticButton';
 // 3. MAIN COMPONENT
 // -------------------------------------------------------------------------
 const services = [
-	'Faaast',
+	'Entrega agil',
 	'Poderoso',
 	'Seguridad',
 	'Personalización',

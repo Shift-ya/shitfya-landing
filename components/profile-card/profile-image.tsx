@@ -4,10 +4,12 @@ import { imageVariants } from './profile-card.variants';
 export function ProfileImage({
   image,
   name,
+  imagePosition = 'center',
   isDropdownOpen,
 }: {
   image: string;
   name: string;
+  imagePosition?: string;
   isDropdownOpen?: boolean;
 }) {
   return (
@@ -16,6 +18,7 @@ export function ProfileImage({
         src={image}
         alt={name}
         className="absolute inset-0 w-full h-full object-cover"
+        style={{ objectPosition: imagePosition }}
         variants={imageVariants}
         animate={{
           opacity: 1,

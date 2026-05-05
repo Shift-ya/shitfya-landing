@@ -42,6 +42,77 @@ Lint:
 npm run lint
 ```
 
+## Agenda con Google Calendar real
+
+La landing ya puede:
+
+- Consultar disponibilidad real desde Google Calendar.
+- Crear un evento real al confirmar la reunion.
+- Enviar una notificacion interna a `helloshiftya@gmail.com`.
+
+### 1. Crear service account en Google Cloud
+
+1. Entra a Google Cloud Console.
+2. Crea o elige un proyecto.
+3. Activa la Google Calendar API.
+4. Crea una Service Account.
+5. Genera una clave JSON.
+
+Del JSON vas a usar:
+
+- `client_email` -> `GOOGLE_CLIENT_EMAIL`
+- `private_key` -> `GOOGLE_PRIVATE_KEY`
+
+### 2. Compartir el calendario con la service account
+
+1. Abre el Google Calendar donde quieres recibir las reuniones.
+2. Ve a `Configuracion y uso compartido`.
+3. En `Compartir con personas y grupos`, agrega el `client_email` de la service account.
+4. Dale permiso `Hacer cambios en eventos`.
+
+El ID del calendario va en `GOOGLE_CALENDAR_ID`.
+
+### 3. Configurar variables de entorno
+
+Crea tu `.env.development` tomando como base `.env.example`.
+
+Variables necesarias:
+
+- `GMAIL_USER`
+- `GMAIL_APP_PASSWORD`
+- `MEETING_NOTIFICATION_EMAIL`
+- `GOOGLE_CLIENT_EMAIL`
+- `GOOGLE_PRIVATE_KEY`
+- `GOOGLE_CALENDAR_ID`
+- `GOOGLE_CALENDAR_TIMEZONE`
+
+Notas:
+
+- `GMAIL_APP_PASSWORD` debe ser una app password de Google, no la password normal.
+- `GOOGLE_PRIVATE_KEY` debe conservar los saltos de linea como `\n`.
+- `GOOGLE_CALENDAR_TIMEZONE` puede quedar en `America/Argentina/Buenos_Aires`.
+
+### 4. Flujo actual
+
+- El modal consulta `/api/meetings?date=YYYY-MM-DD` para mostrar solo slots libres.
+- Al confirmar, `POST /api/meetings` vuelve a validar disponibilidad.
+- Si el slot sigue libre, crea el evento en Google Calendar.
+- Despues manda email interno a `helloshiftya@gmail.com` con el link del evento.
+
+### 5. Probar localmente
+
+```bash
+npm run dev
+```
+
+Luego:
+
+1. Abre la landing.
+2. Haz click en `Agendar reunion`.
+3. Selecciona una fecha libre.
+4. Completa el formulario.
+5. Confirma que se crea el evento en tu calendario y llega el correo.
+
 ## Estructura
 
 - `app/layout.tsx`: layout raíz y metadata.

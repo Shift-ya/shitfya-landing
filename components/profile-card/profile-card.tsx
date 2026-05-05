@@ -18,6 +18,7 @@ export interface ProfileCardProps {
   name?: string;
   description?: string;
   image?: string;
+  imagePosition?: string;
   enableAnimations?: boolean;
   className?: string;
   socials?: SocialLink[];
@@ -31,6 +32,7 @@ export function ProfileCard({
   name = '',
   description = '',
   image = 'https://images.unsplash.com/photo-1502685104226-ee32379fefbe?w=800&h=800&fit=crop&auto=format&q=80',
+  imagePosition = 'center',
   enableAnimations = true,
   className,
   socials = [],
@@ -73,7 +75,12 @@ export function ProfileCard({
       )}
     >
       <div className="absolute inset-0 overflow-hidden rounded-3xl">
-        <ProfileImage image={image} name={name} isDropdownOpen={isDropdownOpen} />
+        <ProfileImage
+          image={image}
+          name={name}
+          imagePosition={imagePosition}
+          isDropdownOpen={isDropdownOpen}
+        />
       </div>
 
       <motion.div
