@@ -1,85 +1,210 @@
 
 
-const founders = [
+'use client';
+
+import { ProfileCard } from '@/components/profile-card';
+import { useCarousel } from '@/hooks/use-carousel';
+import type { SocialLink } from '@/components/ui/social-dropdown';
+import {
+  CarouselButton,
+  CarouselDots,
+  CarouselContainer,
+  slideVariants,
+  slideTransition,
+} from '@/components/carousel';
+import { FounderInfoCard } from '@/components/founder-info-card';
+import { SectionHeader } from '@/components/section-header';
+
+interface Founder {
+  id: string;
+  name: string;
+  role: string;
+  bio?: string;
+  image: string;
+  isVerified?: boolean;
+  socials?: SocialLink[];
+  githubUsername?: string;
+}
+
+const founders: Founder[] = [
   {
-    name: "Nombre Fundador",
-    role: "CEO & Co-fundador",
-    image: "/founders/founder-1.jpg",
-    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
+    id: 'founder-1',
+    name: 'Santiago Cofman',
+    role: 'Backend & Co-fundador',
+    bio: '',
+    image: '/founders/founder-1.jpg',
+    isVerified: true,
+    githubUsername: 'Santicof',
+    socials: [
+      {
+        platform: 'github',
+        url: 'https://github.com/Santicof',
+        username: '@Santicof',
+      },
+      {
+        platform: 'linkedin',
+        url: 'https://linkedin.com/in/santiagocofman',
+        username: '@santiagocofman',
+        followers: 2100,
+        following: 320,
+      },
+      {
+        platform: 'instagram',
+        url: 'https://instagram.com/san_sistema',
+        username: '@san_sistema',
+        followers: 23500,
+        following: 40,
+      },
+    ],
   },
   {
-    name: "Nombre Fundadora",
-    role: "CTO & Co-fundadora",
-    image: "/founders/founder-2.jpg",
-    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
+    id: 'founder-2',
+    name: 'María Luz Piro',
+    role: 'Fullstack & Co-fundadora',
+    bio: '',
+    image: '/founders/founder-2.jpg',
+    isVerified: true,
+    githubUsername: 'MariaLuz18',
+    socials: [
+      {
+        platform: 'github',
+        url: 'https://github.com/MariaLuz18',
+        username: '@MariaLuz18',
+      },
+      {
+        platform: 'linkedin',
+        url: 'www.linkedin.com/in/marialuzpiro',
+        username: '@marialuzpiro',
+        followers: 477,
+      },
+      {
+        platform: 'instagram',
+        url: 'https://instagram.com/piromalu',
+        username: '@piromalu',
+        followers: 301,
+        following: 638,
+      },
+    ],
   },
   {
-    name: "Dante Lugo",
-    role: "Frontend Developer & Co-fundador",
-    image: "/founders/founder-3.jpg",
-    bio: "Dante Lugo es Frontend Developer y cofundador de shift.ya, donde lidera la construcción de interfaces modernas y productos digitales de alto impacto. Su enfoque combina velocidad, precisión técnica y una fuerte visión de producto para transformar ideas en soluciones reales.",
+    id: 'founder-3',
+    name: 'Dante Lugo',
+    role: 'Frontend Developer & Co-fundador',
+    bio: '',
+    image: '/founders/founder-3.jpg',
+    isVerified: true,
+    githubUsername: 'dantel8',
+    socials: [
+      {
+        platform: 'github',
+        url: 'https://github.com/dantel8',
+        username: '@dantel8',
+      },
+      {
+        platform: 'linkedin',
+        url: 'https://linkedin.com/in/dantelugo',
+        username: '@dantelugo',
+        followers: 154,
+      },
+      {
+        platform: 'instagram',
+        url: 'https://instagram.com/dantekbz',
+        username: '@dantekbz',
+        followers: 145,
+        following: 180,
+      },
+    ],
   },
-]
+];
 
 export function Founders() {
-  return (
-    <section id="about" aria-labelledby="founders-heading" className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
-      {/* Header */}
-      <div className="mb-16 text-center">
-        <p className="brand-text-gradient mb-4 text-xs font-semibold uppercase tracking-widest">
-          El equipo
-        </p>
-        <h2
-          id="founders-heading"
-          className="text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl"
-        >
-          Los fundadores
-        </h2>
-        <p className="mx-auto mt-4 max-w-md text-pretty text-sm leading-relaxed text-muted-foreground">
-          Un equipo construido para hacer las cosas bien. Tres personas, un mismo norte.
-        </p>
-      </div>
+  const {
+    currentIndex,
+    direction,
+    currentItem: currentFounder,
+    handlePrev,
+    handleNext,
+    handleDotClick,
+    setIsAutoPlay,
+    handleTouchStart,
+    handleTouchEnd,
+  } = useCarousel({ items: founders });
 
-      {/* Cards */}
-      <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+  return (
+    <section
+      id="about"
+      aria-labelledby="founders-heading"
+      className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8"
+    >
+      <SectionHeader
+        badge="El equipo"
+        title="Los fundadores"
+        description="Un equipo construido para hacer las cosas bien. Tres personas, un mismo norte."
+      />
+
+      {/* Desktop Grid */}
+      <div className="hidden md:grid md:grid-cols-3 lg:grid-cols-3 gap-6 md:gap-8 py-12 auto-cols-fr">
         {founders.map((founder) => (
-          <article
-            key={founder.image}
-            className="group flex flex-col items-center text-center"
-          >
-            {/* Image */}
-            <div className="relative mb-6 h-56 w-56 overflow-hidden rounded-2xl border border-border bg-muted transition-all duration-300 group-hover:border-primary/40 group-hover:shadow-[0_0_32px_oklch(0.68_0.22_264/0.18)]">
-              <img
-                src={founder.image}
-                alt={`Foto de ${founder.name}`}
-                className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-              />
-              {/* Subtle gradient overlay at bottom */}
-              <div
-                className="pointer-events-none absolute inset-x-0 bottom-0 h-16"
-                style={{
-                  background:
-                    "linear-gradient(to top, oklch(0.08 0 0 / 0.6), transparent)",
-                }}
-                aria-hidden="true"
+          <div key={founder.id} className="flex flex-col items-center text-center">
+            <div className="w-full max-w-sm">
+              <ProfileCard
+                name={founder.name}
+                description={founder.bio}
+                image={founder.image}
+                socials={founder.socials ?? []}
+                gitHubUsername={founder.githubUsername}
+                enableAnimations={true}
+                width="w-full"
+                height="h-96"
               />
             </div>
-
-            {/* Name */}
-            <h3 className="text-lg font-semibold text-foreground">{founder.name}</h3>
-
-            {/* Role */}
+            <h3 className="text-xl font-bold text-foreground mt-6">{founder.name}</h3>
             <p className="brand-text-gradient mt-1 text-xs font-medium uppercase tracking-widest">
               {founder.role}
             </p>
-
-            {/* Bio */}
-            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              {founder.bio}
-            </p>
-          </article>
+          </div>
         ))}
       </div>
+
+      {/* Mobile Carousel */}
+      <div 
+        className="md:hidden relative flex items-center justify-center px-4 py-8 overflow-hidden"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
+        <CarouselContainer
+          itemId={currentFounder.id}
+          direction={direction}
+          variants={slideVariants}
+          transition={slideTransition}
+          onMouseEnter={() => setIsAutoPlay(false)}
+          onMouseLeave={() => setIsAutoPlay(true)}
+        >
+          <ProfileCard
+            name={currentFounder.name}
+            description={currentFounder.bio}
+            image={currentFounder.image}
+            socials={currentFounder.socials ?? []}
+            gitHubUsername={currentFounder.githubUsername}
+            enableAnimations={true}
+            width="w-80"
+            height="h-96"
+          />
+        </CarouselContainer>
+      </div>
+      <div className="block md:hidden">
+        <FounderInfoCard
+          id={currentFounder.id}
+          name={currentFounder.name}
+          role={currentFounder.role}
+        />
+
+        <CarouselDots
+          total={founders.length}
+          current={currentIndex}
+          onDotClick={handleDotClick}
+        />
+      </div>
     </section>
-  )
+  );
 }
