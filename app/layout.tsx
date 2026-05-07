@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: '/logo-shiftya.png',
+        url: '/icon.svg',
         type: 'image/svg+xml',
       },
     ],
