@@ -331,9 +331,11 @@ export function Cta() {
 							<div className="flex flex-wrap justify-center gap-4 w-full">
 								<MagneticButton
 									as="a"
-									href="mailto:helloshiftya@gmail.com"
-									className="cta-glass-pill px-10 py-5 rounded-full text-foreground font-bold text-sm md:text-base flex items-center gap-3 group"
-								>
+                                    href="https://mail.google.com/mail/?view=cm&fs=1&to=helloshiftya@gmail.com"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="cta-glass-pill px-10 py-5 rounded-full text-foreground font-bold text-sm md:text-base flex items-center gap-3 group"
+                                >
 									<Mail size={20} />
 									Contacto
 								</MagneticButton>

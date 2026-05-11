@@ -40,8 +40,9 @@ const founders: Founder[] = [
     imagePosition: '50% 28%',
     isVerified: true,
     githubUsername: 'Santicof',
-    likesTitle: 'Algo que me gusta',
-    likesText: 'Hago videos de humor y tecnologia en mi Instagram.',
+    likesTitle: 'Algo que le gusta a Santi',
+    likesText:
+  'Entre código, mates y videos, disfruto encontrarle el lado divertido a la informática y crear contenido que haga sentir identificada a la gente del mundo tech.',
     likesLinks: [
       {
         label: 'Ver playlist en YouTube',
@@ -82,9 +83,10 @@ const founders: Founder[] = [
     image: '/founders/founder-2.jpg',
     isVerified: true,
     githubUsername: 'MariaLuz18',
-    likesTitle: 'Algo que le gusta a Maria',
-    likesText: 'Espacio para completar con lo que le gusta a Maria.',
-    socials: [
+    likesTitle: 'Algo que le gusta a Malu',
+    likesText:
+  'Me encanta arrancar el día con un buen café, escuchar playlists tranquilas y perderme ajustando pequeños detalles visuales hasta que todo quede como lo imaginé.',
+  socials: [
       {
         platform: 'github',
         url: 'https://github.com/MariaLuz18',
@@ -114,8 +116,9 @@ const founders: Founder[] = [
     isVerified: true,
     githubUsername: 'dantel8',
     likesTitle: 'Algo que le gusta a Dante',
-    likesText: 'Espacio para completar con lo que le gusta a Dante.',
-    socials: [
+    likesText:
+  'Disfruto las ideas creativas que aparecen de madrugada, los pequeños detalles que hacen diferente a un proyecto y la sensación de construir algo propio.',
+  socials: [
       {
         platform: 'github',
         url: 'https://github.com/dantel8',

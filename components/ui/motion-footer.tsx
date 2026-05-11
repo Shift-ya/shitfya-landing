@@ -337,16 +337,19 @@ export function MotionFooter() {
 							<div className="flex flex-wrap justify-center gap-4 w-full">
 								<MagneticButton
 									as="a"
-									href="mailto:helloshiftya@gmail.com"
+									href="https://mail.google.com/mail/?view=cm&fs=1&to=helloshiftya@gmail.com"
+									target="_blank"
+									rel="noreferrer"
 									className="footer-glass-pill px-10 py-5 rounded-full text-foreground font-bold text-sm md:text-base flex items-center gap-3 group"
 								>
-									<Mail size={20} />
-									Contacto
+									<Mail className="w-5 h-5" />
+									Gmail
 								</MagneticButton>
-
 								<MagneticButton
 									as="a"
 									href="https://wa.me/message/your-whatsapp-number"
+									target="_blank"
+									rel="noreferrer"
 									className="footer-glass-pill px-10 py-5 rounded-full text-foreground font-bold text-sm md:text-base flex items-center gap-3 group"
 								>
 									<svg
