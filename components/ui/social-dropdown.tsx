@@ -148,7 +148,7 @@ export function SocialDropdown({
                   whileTap={{ scale: 0.98 }}
                   className={cn(
                     'w-full flex items-center gap-3 px-4 py-3 rounded-xl',
-                    'transition-all duration-200 text-white text-sm relative z-50',
+                    'transition-all duration-200 text-white text-sm relative z-50 flex flex-row flex-wrap max-w[310px]',
                     bgColor
                   )}
                 >
@@ -157,10 +157,10 @@ export function SocialDropdown({
                     <p className="font-semibold">
                       {socialLabels[social.platform]}
                     </p>
-                    <p className="text-xs opacity-90">
+                    <p className="text-xs opacity-90 flex gap-2 items-center">
                       {social.username || socialUsernames[social.platform]}
                       {social.username === '@san_sistema' && social.followers ? (
-                        <span className="ml-2 rounded-full border border-white/30 px-2 py-0.5 text-[10px] font-medium text-white/95">
+                        <span className="rounded-full border border-white/30 px-2 py-0.5 text-[10px] font-medium text-white/95 text-nowrap">
                           En vivo: {getLiveFollowers(social.followers).toLocaleString()}
                         </span>
                       ) : null}

@@ -117,7 +117,7 @@ const founders: Founder[] = [
     githubUsername: 'dantel8',
     likesTitle: 'Algo que le gusta a Dante',
     likesText:
-  'Disfruto las ideas creativas que aparecen de madrugada, los pequeños detalles que hacen diferente a un proyecto y la sensación de construir algo propio.',
+  'Programación, Peliculas y Música, las tres cosas que más disfruto. Me gusta crear cosas nuevas, aprender y compartir lo que sé con los demás. Siempre buscando la próxima serie para maratonear o el próximo proyecto para desarrollar.',
   socials: [
       {
         platform: 'github',
